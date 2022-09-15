@@ -9,6 +9,8 @@ public:
     Poligon();
     ~Poligon();
     Poligon(int nCostats);
+    Poligon(const Poligon& p);
+    Poligon& operator=(const Poligon& p);
 
     int getNCostats() const { return m_nCostats; };
     bool afegeixVertex(const Punt &v);
@@ -17,7 +19,7 @@ public:
 private:
     static const int MAX_COSTATS = 30;
     static const int MIN_COSTATS = 3;
-    Punt m_vertexs[MAX_COSTATS];
+    Punt *m_vertexs;
     int m_nCostats;
     int m_nVertexs;
 };

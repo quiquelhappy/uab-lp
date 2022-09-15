@@ -4,13 +4,14 @@
 Poligon::Poligon()
 {
     m_nCostats = MIN_COSTATS;
+    m_vertexs = new Punt[m_nCostats];
     m_nVertexs = 0;
 
 }
 
 Poligon::~Poligon()
 {
-
+    delete [] m_vertexs;
 }
 
 Poligon::Poligon(int nCostats)
@@ -19,8 +20,18 @@ Poligon::Poligon(int nCostats)
         m_nCostats = nCostats;
     else
         m_nCostats = MIN_COSTATS;
+    m_vertexs=new Punt[m_nCostats];
     m_nVertexs = 0;
 }
+
+Poligon::Poligon(const Poligon &p) {
+    m_nVertexs = p.m_nVertexs;
+    m_nCostats = p.m_nCostats;
+    m_vertexs = new Punt[m_nCostats];
+    for (int i = 0; i < m_nVertexs; i++)
+        m_vertexs[i] = p.m_vertexs[i];
+}
+
 
 bool Poligon::afegeixVertex(const Punt &v)
 {
@@ -60,4 +71,17 @@ float Poligon::calculaPerimetre() const
     perimetre += sqrt(dx*dx + dy*dy);
 
     return perimetre;
+}
+
+Poligon &Poligon::operator=(const Poligon &p) {
+    if (this != &p)
+    {
+        delete[] m_vertexs;
+        m_nVertexs = p.m_nVertexs;
+        m_nCostats = p.m_nCostats;
+        m_vertexs = new Punt[m_nCostats];
+        for (int i = 0; i < m_nVertexs; i++)
+            m_vertexs[i] = p.m_vertexs[i];
+    }
+    return *this;
 }
