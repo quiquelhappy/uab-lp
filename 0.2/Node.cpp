@@ -14,11 +14,11 @@ Node::Node() {
     next=nullptr;
 }
 
-Punt Node::getValor() {
+Punt Node::getValor() const {
     return punt;
 }
 
-Node *Node::getNext() {
+Node *Node::getNext() const {
     return next;
 }
 

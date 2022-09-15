@@ -15,8 +15,8 @@ public:
     explicit Node(Punt punt);
     Node(Punt punt, Node* next);
     void setNext(Node* node);
-    Punt getValor();
-    Node* getNext();
+    Punt getValor() const;
+    Node* getNext() const;
     Node* getLast();
 private:
     Punt punt;
