@@ -4,14 +4,22 @@
 Poligon::Poligon()
 {
     m_nCostats = MIN_COSTATS;
-    m_vertexs = new Punt[m_nCostats];
     m_nVertexs = 0;
-
+    m_vertexs = NULL;
+    m_ultimVertex = NULL;
 }
 
 Poligon::~Poligon()
 {
     delete [] m_vertexs;
+    while (m_vertexs != NULL)
+    {
+        Node* aux;
+        aux = m_vertexs;
+        m_vertexs = m_vertexs->getNext();
+        delete aux;
+    }
+
 }
 
 Poligon::Poligon(int nCostats)
@@ -20,7 +28,8 @@ Poligon::Poligon(int nCostats)
         m_nCostats = nCostats;
     else
         m_nCostats = MIN_COSTATS;
-    m_vertexs=new Punt[m_nCostats];
+    m_vertexs = nullptr;
+    m_ultimVertex = nullptr;
     m_nVertexs = 0;
 }
 
@@ -35,22 +44,30 @@ Poligon::Poligon(const Poligon &p) {
 
 bool Poligon::afegeixVertex(const Punt &v)
 {
-    bool correcte = false;
-    if (m_nVertexs < m_nCostats)
-    {
-        m_vertexs[m_nVertexs] = v;
-        m_nVertexs++;
+    bool correcte = false;;
+    if (m_nVertexs < m_nCostats) {
         correcte = true;
+        m_nVertexs++;
+        Node* aux = new Node(v);
+        if (m_vertexs == NULL)
+            m_vertexs = aux;
+        else
+            m_ultimVertex->setNext(aux);
+        m_ultimVertex = aux;
     }
+
     return correcte;
 }
 
 bool Poligon::getVertex(int nVertex, Punt &v) const
 {
     bool correcte = false;
-    if ((nVertex > 0) && (nVertex <= m_nCostats))
+    if ((nVertex > 0) && (nVertex <= m_nVertexs))
     {
-        v = m_vertexs[nVertex - 1];
+        Node* aux = m_vertexs;
+        for (int i = 1; i < nVertex; i++)
+            aux = aux->getNext();
+        v = aux->getValor();
         correcte = true;
     }
     return correcte;
@@ -60,28 +77,39 @@ float Poligon::calculaPerimetre() const
 {
     float perimetre = 0;
     float dx, dy;
-    for (int i = 0; i < m_nCostats - 1; i++)
+    Node* aux = m_vertexs;
+    for (int i = 0; i < (m_nCostats - 1); i++)
     {
-        dx = m_vertexs[i].getX() - m_vertexs[i+1].getX();
-        dy = m_vertexs[i].getY() - m_vertexs[i+1].getY();
+        Node* seguent = aux->getNext();
+        dx = aux->getValor().getX() - seguent->getValor().getX();
+        dy = aux->getValor().getY() - seguent->getValor().getY();
         perimetre += sqrt(dx*dx + dy*dy);
+        aux = seguent;
     }
-    dx = m_vertexs[m_nCostats - 1].getX() - m_vertexs[0].getX();
-    dy = m_vertexs[m_nCostats - 1].getY() - m_vertexs[0].getY();
+    dx = aux->getValor().getX() - m_vertexs->getValor().getX();
+    dy = aux->getValor().getY() - m_vertexs->getValor().getY();
     perimetre += sqrt(dx*dx + dy*dy);
-
     return perimetre;
 }
 
 Poligon &Poligon::operator=(const Poligon &p) {
     if (this != &p)
     {
-        delete[] m_vertexs;
-        m_nVertexs = p.m_nVertexs;
+        while (m_vertexs != NULL)
+        {
+            Node* aux;
+            aux = m_vertexs;
+            m_vertexs = m_vertexs->getNext();
+            delete aux;
+        }
         m_nCostats = p.m_nCostats;
-        m_vertexs = new Punt[m_nCostats];
-        for (int i = 0; i < m_nVertexs; i++)
-            m_vertexs[i] = p.m_vertexs[i];
+        m_nVertexs = 0;
+        Node* aux = p.m_vertexs;
+        while (aux != NULL)
+        {
+            afegeixVertex(aux->getValor());
+            aux = aux->getNext();
+        }
     }
     return *this;
 }

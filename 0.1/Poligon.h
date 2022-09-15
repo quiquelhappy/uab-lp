@@ -19,7 +19,8 @@ public:
 private:
     static const int MAX_COSTATS = 30;
     static const int MIN_COSTATS = 3;
-    Punt *m_vertexs;
+    Node* m_vertexs;
+    Node* m_ultimVertex;
     int m_nCostats;
     int m_nVertexs;
 };
