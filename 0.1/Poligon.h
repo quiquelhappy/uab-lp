@@ -2,6 +2,7 @@
 #define POLIGON_H
 
 #include "Punt.h"
+#include "Node.h"
 
 class Poligon
 {

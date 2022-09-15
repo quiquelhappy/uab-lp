@@ -19,15 +19,15 @@ void omplirPoligon (Poligon &p)
 
 void mostrarPoligon(Poligon &p)
 {
-	for (int i = 1; i <= p.getNCostats(); i++)
-	{
-		Punt v;
-		p.getVertex(i, v);
+    for (int i = 1; i <= p.getNCostats(); i++)
+    {
+        Punt v;
+        p.getVertex(i, v);
 
-		cout << "Coordenades del vertex " << i << ": " << v.getX() << ", " << v.getY() << endl;
-	}
-	float perimetre = p.calculaPerimetre();
-	cout << "El perimetre del poligon es: " << perimetre << endl;
+        cout << "Coordenades del vertex " << i << ": " << v.getX() << ", " << v.getY() << endl;
+    }
+    float perimetre = p.calculaPerimetre();
+    cout << "El perimetre del poligon es: " << perimetre << endl;
 }
 
 int main()
@@ -38,30 +38,30 @@ int main()
 
     Poligon p(nCostats);
 
-	if (nCostats == p.getNCostats())
-	{
-		omplirPoligon(p);
-		mostrarPoligon(p);
+    if (nCostats == p.getNCostats())
+    {
+        omplirPoligon(p);
+        mostrarPoligon(p);
 
-	}
-	else
-		cout << "ERROR" << endl;
-
-
-	cout << endl << endl;
-	cout << "====================================================" << endl;
-	cout << "COPIA DEL POLIGON" << endl;
-	Poligon pCopia(p);
-	mostrarPoligon(pCopia);
+    }
+    else
+        cout << "ERROR" << endl;
 
 
+    cout << endl << endl;
+    cout << "====================================================" << endl;
+    cout << "COPIA DEL POLIGON" << endl;
+    Poligon pCopia(p);
+    mostrarPoligon(pCopia);
 
-	cout << endl << endl;
-	cout << "====================================================" << endl;
-	cout << "AASIGNACIO DEL POLIGON" << endl;
-	Poligon pAssignacio;
-	pAssignacio = p;
-	mostrarPoligon(pAssignacio);
+
+
+    cout << endl << endl;
+    cout << "====================================================" << endl;
+    cout << "AASIGNACIO DEL POLIGON" << endl;
+    Poligon pAssignacio;
+    pAssignacio = p;
+    mostrarPoligon(pAssignacio);
 
     return 0;
 }

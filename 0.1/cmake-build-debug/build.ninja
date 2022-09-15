@@ -67,6 +67,12 @@ build CMakeFiles/0_1.dir/Punt.cpp.obj: CXX_COMPILER__0_1_Debug C$:/Users/happy/D
   OBJECT_DIR = CMakeFiles\0_1.dir
   OBJECT_FILE_DIR = CMakeFiles\0_1.dir
 
+build CMakeFiles/0_1.dir/Node.cpp.obj: CXX_COMPILER__0_1_Debug C$:/Users/happy/Documents/GitHub/uab/uab-lp/0.1/Node.cpp || cmake_object_order_depends_target_0_1
+  DEP_FILE = CMakeFiles\0_1.dir\Node.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles\0_1.dir
+  OBJECT_FILE_DIR = CMakeFiles\0_1.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target 0_1
@@ -75,7 +81,7 @@ build CMakeFiles/0_1.dir/Punt.cpp.obj: CXX_COMPILER__0_1_Debug C$:/Users/happy/D
 #############################################
 # Link the executable 0_1.exe
 
-build 0_1.exe: CXX_EXECUTABLE_LINKER__0_1_Debug CMakeFiles/0_1.dir/main.cpp.obj CMakeFiles/0_1.dir/Poligon.cpp.obj CMakeFiles/0_1.dir/Punt.cpp.obj
+build 0_1.exe: CXX_EXECUTABLE_LINKER__0_1_Debug CMakeFiles/0_1.dir/main.cpp.obj CMakeFiles/0_1.dir/Poligon.cpp.obj CMakeFiles/0_1.dir/Punt.cpp.obj CMakeFiles/0_1.dir/Node.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\0_1.dir

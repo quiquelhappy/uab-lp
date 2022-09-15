@@ -11,15 +11,7 @@ Poligon::Poligon()
 
 Poligon::~Poligon()
 {
-    delete [] m_vertexs;
-    while (m_vertexs != NULL)
-    {
-        Node* aux;
-        aux = m_vertexs;
-        m_vertexs = m_vertexs->getNext();
-        delete aux;
-    }
-
+    delete m_vertexs;
 }
 
 Poligon::Poligon(int nCostats)
@@ -36,9 +28,10 @@ Poligon::Poligon(int nCostats)
 Poligon::Poligon(const Poligon &p) {
     m_nVertexs = p.m_nVertexs;
     m_nCostats = p.m_nCostats;
-    m_vertexs = new Punt[m_nCostats];
-    for (int i = 0; i < m_nVertexs; i++)
-        m_vertexs[i] = p.m_vertexs[i];
+    if(p.m_vertexs!= nullptr){
+        m_vertexs=new Node(p.m_vertexs->getValor(),p.m_vertexs->getNext());
+        m_ultimVertex=m_vertexs->getLast();
+    }
 }
 
 
@@ -95,21 +88,14 @@ float Poligon::calculaPerimetre() const
 Poligon &Poligon::operator=(const Poligon &p) {
     if (this != &p)
     {
-        while (m_vertexs != NULL)
-        {
-            Node* aux;
-            aux = m_vertexs;
-            m_vertexs = m_vertexs->getNext();
-            delete aux;
+        if(p.m_vertexs!= nullptr){
+            m_vertexs = new Node(p.m_vertexs->getValor(),p.m_vertexs->getNext());
+            m_ultimVertex=m_vertexs->getLast();
+        } else {
+            m_vertexs= nullptr;
+            m_ultimVertex= nullptr;
         }
-        m_nCostats = p.m_nCostats;
-        m_nVertexs = 0;
-        Node* aux = p.m_vertexs;
-        while (aux != NULL)
-        {
-            afegeixVertex(aux->getValor());
-            aux = aux->getNext();
-        }
+        m_nVertexs = p.m_nVertexs;
     }
     return *this;
 }
