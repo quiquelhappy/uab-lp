@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/happy/Documents/GitHub/uab/uab-lp/aaa/cmake-build-debug"
+			"value" : "c:/Users/happy/Documents/GitHub/uab/uab-lp/R4/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -623,7 +623,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/happy/Documents/GitHub/uab/uab-lp/aaa"
+			"value" : "C:/Users/happy/Documents/GitHub/uab/uab-lp/R4"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -635,7 +635,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Program Files (x86)/aaa"
+			"value" : "C:/Program Files (x86)/R4"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -851,7 +851,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "aaa"
+			"value" : "R4"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1230,7 +1230,7 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "aaa_BINARY_DIR",
+			"name" : "R4_BINARY_DIR",
 			"properties" : 
 			[
 				{
@@ -1239,10 +1239,10 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/happy/Documents/GitHub/uab/uab-lp/aaa/cmake-build-debug"
+			"value" : "C:/Users/happy/Documents/GitHub/uab/uab-lp/R4/cmake-build-debug"
 		},
 		{
-			"name" : "aaa_IS_TOP_LEVEL",
+			"name" : "R4_IS_TOP_LEVEL",
 			"properties" : 
 			[
 				{
@@ -1254,7 +1254,7 @@
 			"value" : "ON"
 		},
 		{
-			"name" : "aaa_SOURCE_DIR",
+			"name" : "R4_SOURCE_DIR",
 			"properties" : 
 			[
 				{
@@ -1263,7 +1263,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/happy/Documents/GitHub/uab/uab-lp/aaa"
+			"value" : "C:/Users/happy/Documents/GitHub/uab/uab-lp/R4"
 		}
 	],
 	"kind" : "cache",
