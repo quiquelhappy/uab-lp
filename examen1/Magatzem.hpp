@@ -41,7 +41,7 @@ void Magatzem<T>::afegirProducte(T& m) {
 
 template <class T>
 void Magatzem<T>::eliminarProducte(T& m) {
-    for (auto it = m_contingut.begin(); it < m_contingut.end(); it++) {
+    for (auto it = m_contingut.begin(); it != m_contingut.end(); it++) {
         if (it -> first == m.Codi()) {
             delete(it -> second);
             m_contingut.erase(it);
