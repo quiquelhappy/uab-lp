@@ -6,16 +6,18 @@
 #define EXAMEN1_MAGATZEM_HPP
 
 #include <iostream>
+#include <unordered_map> // obviate
 
 using namespace std;
 
+template<class T>
 class Magatzem {
 public:
     Magatzem(float capacitat = 10000): m_capacitat(capacitat) {};
     ~Magatzem();
 
-    void afegirProducte(A& m);
-    void eliminarProducte(A& m);
+    void afegirProducte(T& m);
+    void eliminarProducte(T& m);
 
     friend ostream& operator << (ostream out, const Magatzem & m) {
         out << "Magatzem: " << endl;
@@ -26,17 +28,19 @@ public:
     }
 
 private:
-    unordered_map <int, A*> m_contingut;
+    unordered_map<int, T*> m_contingut;
     float m_capacitat;
 };
 
-void Magatzem::afegirProducte(A& m) {
+template <class T>
+void Magatzem<T>::afegirProducte(T& m) {
     if (m_capacitat + m.Volum() >= 0) {
-        m_contingut[m.Codi()] = new A(m);
+        m_contingut[m.Codi()] = new T(m);
     }
 }
 
-void Magatzem::eliminarProducte(A& m) {
+template <class T>
+void Magatzem<T>::eliminarProducte(T& m) {
     for (auto it = m_contingut.begin(); it < m_contingut.end(); it++) {
         if (it -> first == m.Codi()) {
             delete(it -> second);
@@ -45,7 +49,8 @@ void Magatzem::eliminarProducte(A& m) {
     }
 }
 
-Magatzem::~Magatzem() {
+template <class T>
+Magatzem<T>::~Magatzem() {
     for (auto it = m_contingut.begin(); it != m_contingut.end(); ++it) {
         delete(it -> second);
     }
