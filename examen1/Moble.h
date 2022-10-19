@@ -9,8 +9,10 @@
 class Moble
 {
 public:
-    Moble();
+    Moble(int codi, float volum): m_codi(codi), m_volum(volum)  {};
     ~Moble() {}
+    float Volum() const { return m_volum; }
+    int Codi() const { return m_codi; }
 private:
     int m_codi;
     float m_volum;
